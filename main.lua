@@ -1,5 +1,6 @@
 local d = require('dev-tools')
 require "game"
+require "lib.utils"
 
 SCALE = 1.5
 

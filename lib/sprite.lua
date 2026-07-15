@@ -20,7 +20,7 @@ function M:new(options)
       is_playing = true,
       frames = #frames,
       current_frame = 1,
-      duration = 0.065,
+      duration = 0.1,
       elapsed_time = 0
     }
   }, M)
@@ -50,7 +50,7 @@ function M:draw()
   end
 
 
-  love.graphics.draw(frame, (x+400), y, 0, ox, 1)
+  love.graphics.draw(frame, x, y, 0, ox, 1)
 end
 
 function M:play(animation_name)
