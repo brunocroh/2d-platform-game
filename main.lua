@@ -27,17 +27,17 @@ function love.keypressed(key)
     Game = Game:new()
     Game:load()
   end
-  Game:keypressed()
+  Game:keypressed(key)
 end
 
 function love.keyreleased(key)
-  Game:keyreleased()
+  Game:keyreleased(key)
 end
 
-function love.mousepressed(x, y, btn)
-  Game:mousepressed(x, y, btn)
-end
-
-function love.mousereleased(x, y, btn)
-  Game:mousereleased(x, y, btn)
-end
+-- function love.mousepressed(x, y, btn)
+--   Game:mousepressed(x, y, btn)
+-- end
+--
+-- function love.mousereleased(x, y, btn)
+--   Game:mousereleased(x, y, btn)
+-- end

@@ -22,17 +22,17 @@ function Game:draw()
   self.player:draw()
 end
 
-function Game:keypressed()
-  self.player:play('run')
+function Game:keypressed(key)
+  print(key)
+  self.player:keypressed(key)
 end
 
-function Game:keyreleased()
+function Game:keyreleased(key)
+  self.player:keyreleased(key)
 end
 
-function Game:mousepressed(x, y, btn)
-  print(x,y,btn)
+function Game:mousepressed()
 end
 
-function Game:mousereleased(x, y, btn)
-  print(x,y,btn)
+function Game:mousereleased()
 end

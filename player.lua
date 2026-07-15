@@ -7,6 +7,7 @@ function M:new(props)
 
   local walk = {}
   local run = {}
+  local idle = {}
 
   for i = 1, 12, 1 do
     table.insert(
@@ -22,12 +23,20 @@ function M:new(props)
     )
   end
 
+  for i = 1, 7, 1 do
+    table.insert(
+      idle,
+      love.graphics.newImage(string.format('assets/common_00_idle_stand_A%02d.png', i))
+    )
+  end
+
   local sprite = Sprite:new({
     files = {
       walk = walk,
       run = run,
+      idle = idle,
     },
-    active_animation = "walk",
+    active_animation = "idle",
     x = props.x,
     y = props.y,
   })
@@ -40,6 +49,16 @@ function M:new(props)
 end
 
 function M:update(dt)
+  if self.key_pressed == 'd' then
+    self.sprite.mirror = false
+  end
+
+  if self.key_pressed == 'a' then
+    self.sprite.mirror = true
+  end
+
+
+
   self.sprite.x = self.x
   self.sprite.y = self.y
   self.sprite:update(dt)
@@ -49,6 +68,17 @@ function M:draw()
   love.graphics.rectangle('fill', self.x, self.y, 20, 80)
   self.sprite:draw()
 end
+
+function M:keypressed(key)
+  self.sprite:play("walk")
+  self.key_pressed = key
+end
+
+function M:keyreleased()
+  self.sprite:play("idle")
+  self.key_pressed = nil
+end
+
 
 function M:play(animation)
   self.sprite:play(animation)
